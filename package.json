@@ -1,0 +1,17 @@
+{
+  "name": "BibliotecAndravel",
+  "version": "1.0.0",
+  "description": "Biblioteca de ayuda con topicos de TI",
+  "author": "Andravel",
+  "license": "MIT",
+  "homepage": "https://github.com/andravel/Personal",
+  "main": "js/app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vividcortex/angular-recaptcha.git"
+  },
+  "devDependencies": {
+    "bower": "^1.3.3",
+	"jsonwebtoken": "^5.0.0"	    
+  }
+}

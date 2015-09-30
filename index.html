@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="BibliotecAndravel">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>BibliotecAndravel</title>
+	
+	<link href="css/layout.css" type="text/css" media="screen" rel="stylesheet" />
+	<link href="node_modules/.bin/bower_components/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script src="js/temp/jquery-1.5.2.min.js" type="text/javascript"></script>
+	<script src="js/temp/hideshow.js" type="text/javascript"></script>
+	<script src="js/temp/jquery.tablesorter.min.js" type="text/javascript"></script>
+	<script type="text/temp/javascript" src="js/temp/jquery.equalHeight.js"></script>		
+
+<!--Scripts necesarios funciones angular al final como es recmendable en la especificación -->
+		<SCRIPT src="node_modules/.bin/bower_components/angular/angular.js" type+"text/javascript" ></script>
+		<SCRIPT src="node_modules/.bin/bower_components/angular-animate/angular-animate.js" type+"text/javascript" ></script>	
+		<SCRIPT src="node_modules/.bin/bower_components/angular-route/angular-route.js" type+"text/javascript" ></script>
+		<SCRIPT src="node_modules/.bin/bower_components/angular-resource/angular-resource.js" type+"text/javascript" ></script>
+		<SCRIPT src="node_modules/.bin/bower_components/angular-bootstrap/ui-bootstrap-custom-0.13.4.min.js" type+"text/javascript" ></script>		
+		<SCRIPT src="node_modules/.bin/bower_components/angular-bootstrap/ui-bootstrap-custom-tpls-0.13.4.js" type+"text/javascript" ></script>
+		
+		<SCRIPT src="node_modules/.bin/bower_components/angular-bootstrap/ui-bootstrap.js" type+"text/javascript" ></script>
+		<SCRIPT src="node_modules/.bin/bower_components/angular-bootstrap/ui-bootstrap-tpls.js" type+"text/javascript" ></script>		
+		<SCRIPT src="node_modules/.bin/bower_components/angular-cookies/angular-cookies.js" type+"text/javascript" ></script>
+		<SCRIPT src="js/app.js" type+"text/javascript" ></script>		
+	
+	
+	<script type="text/javascript">
+	$(document).ready(function() 
+    	{ 
+      	  $(".tablesorter").tablesorter(); 
+   	 } 
+	);
+	$(document).ready(function() {
+
+	//When page loads...
+	$(".tab_content").hide(); //Hide all content
+	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+	$(".tab_content:first").show(); //Show first tab content
+
+	//On Click Event
+	$("ul.tabs li").click(function() {
+
+		$("ul.tabs li").removeClass("active"); //Remove any "active" class
+		$(this).addClass("active"); //Add "active" class to selected tab
+		$(".tab_content").hide(); //Hide all tab content
+
+		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+		$(activeTab).fadeIn(); //Fade in the active ID content
+		return false;
+	});
+
+});
+    </script>
+    <!--script type="text/javascript">
+    $(function(){
+        $('.column').equalHeight();
+    });
+</script-->
+
+</head>
+
+
+<body ng-controller="init_controller">
+	
+	<header id="header">
+		<hgroup>
+			<h1 class="site_title"><a href="index.html">Telefonica | Vivo</a></h1>
+			<h2 class="section_title">Andravel</h2><div class="btn_view_site"><a href="http://www.medialoot.com">View Site</a></div>
+		</hgroup>
+	</header> <!-- end of header bar -->
+	
+	<section id="secondary_bar">
+		<div class="user">
+			<p>Gina Marcela (<a href="#">3 Messages</a>)</p>
+			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
+		</div>
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="index.html">Website Admin</a> <div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
+		</div>
+	</section><!-- end of secondary bar -->
+	
+	<aside id="sidebar" class="column">
+		<form class="quick_search">
+			<input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+		</form>
+		<hr/>
+		<h3>Links</h3>
+		<ul class="toggle">
+			<li class="icn_new_article"><a href="#">New Article</a></li>
+			<li class="icn_edit_article"><a href="#">Edit Articles</a></li>
+			<li class="icn_categories"><a href="#">Categories</a></li>
+			<li class="icn_tags"><a href="#">Tags</a></li>
+		</ul>
+		<h3>Codigos</h3>
+		<ul class="toggle">
+			<li class="icn_add_user"><a href="#">Add New User</a></li>
+			<li class="icn_view_users"><a href="#">View Users</a></li>
+			<li class="icn_profile"><a href="#">Your Profile</a></li>
+		</ul>
+		<h3>Manuales</h3>
+		<ul class="toggle">
+			<li class="icn_folder"><a href="#">File Manager</a></li>
+			<li class="icn_photo"><a href="#">Gallery</a></li>
+			<li class="icn_audio"><a href="#">Audio</a></li>
+			<li class="icn_video"><a href="#">Video</a></li>
+		</ul>
+		<h3>Admin</h3>
+		<ul class="toggle">
+			<li class="icn_settings"><a href="#">Options</a></li>
+			<li class="icn_security"><a href="#">Security</a></li>
+			<li class="icn_jump_back"><a href="#">Logout</a></li>
+		</ul>
+		
+	<script type="text/ng-template" id="group-template.html">
+    <div class="panel {{panelClass || 'panel-default'}}">
+      <div class="panel-heading">
+        <h4 class="panel-title" style="color:#fa39c3">
+          <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" accordion-transclude="heading"><span
+            ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
+        </h4>
+      </div>
+      <div class="panel-collapse collapse" collapse="!isOpen">
+        <div class="panel-body" style="text-align: right" ng-transclude></div>
+      </div>
+    </div>
+  </script>
+
+  <p>
+    <button type="button" class="btn btn-default btn-sm" ng-click="status.open = !status.open">Toggle last panel</button>
+    <button type="button" class="btn btn-default btn-sm" ng-click="status.isFirstDisabled = ! status.isFirstDisabled">Enable / Disable first panel</button>
+  </p>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="oneAtATime">
+      Open only one at a time
+    </label>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+
+		
+		
+
+		<footer>
+			<hr />
+			<p><strong>Copyright &copy; 2011 Website Admin</strong></p>
+			<p>Theme by <a href="http://www.medialoot.com">MediaLoot</a></p>
+			
+			
+			<script type="text/ng-template" id="group-template.html">
+    <div class="panel {{panelClass || 'panel-default'}}">
+      <div class="panel-heading">
+        <h4 class="panel-title" style="color:#fa39c3">
+          <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" accordion-transclude="heading"><span
+            ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
+        </h4>
+      </div>
+      <div class="panel-collapse collapse" collapse="!isOpen">
+        <div class="panel-body" style="text-align: right" ng-transclude></div>
+      </div>
+    </div>
+  </script>
+
+  <p>
+    <button type="button" class="btn btn-default btn-sm" ng-click="status.open = !status.open">Toggle last panel</button>
+    <button type="button" class="btn btn-default btn-sm" ng-click="status.isFirstDisabled = ! status.isFirstDisabled">Enable / Disable first panel</button>
+  </p>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="oneAtATime">
+      Open only one at a time
+    </label>
+  </div>
+  <accordion close-others="oneAtATime">
+    <accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      This content is straight in the template.
+    </accordion-group>
+    <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+      {{group.content}}
+    </accordion-group>
+    <accordion-group heading="Dynamic Body Content">
+      <p>The body of the accordion group grows to fit the contents</p>
+      <button type="button" class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>
+      <div ng-repeat="item in items">{{item}}</div>
+    </accordion-group>
+    <accordion-group heading="Custom template" template-url="group-template.html">
+      Hello
+    </accordion-group>
+    <accordion-group heading="Delete account" panel-class="panel-danger">
+      <p>Please, to delete your account, click the button below</p>
+      <button class="btn btn-danger">Delete</button>
+    </accordion-group>
+    <accordion-group is-open="status.open">
+      <accordion-heading>
+        I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+      </accordion-heading>
+      This is just some content to illustrate fancy headings.
+    </accordion-group>
+  </accordion>
+</div>
+			
+			
+		</footer>
+	</aside><!-- end of sidebar -->
+	
+	<section id="main" class="column" ng-view>
+		
+		
+	</section>
+	
+	
+
+</body>
+
+</html>
+
