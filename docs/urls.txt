@@ -1,0 +1,21 @@
+[
+    {
+	  "idSection":"1",
+	  "idCategory":"1",		  
+      "title": "Portlet",
+      "content": "http://www.esacademic.com/dic.nsf/eswiki/948632#Almacenamiento_persistente_para_las_preferencias"    
+	 },
+    {
+	  "idSection":"1",	
+	  "idCategory":"1",	
+      "title": "Read XML files in Java",
+      "content": "http://www.mkyong.com/java/how-to-read-xml-file-in-java-jdom-example/"
+    },
+	{
+	  "idSection":"2",	
+	  "idCategory":"1",	
+      "title": "Read XML files in Java",
+      "content": "http://www.mkyong.com/java/how-to-read-xml-file-in-java-jdom-example/"
+    }
+	
+  ]
